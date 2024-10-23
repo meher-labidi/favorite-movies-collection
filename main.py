@@ -6,6 +6,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 
+
 api_key = "your key"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
