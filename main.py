@@ -25,17 +25,7 @@ class Movies(db.Model):
 
 with app.app_context():
     db.create_all()
-    # new_movie = Movies(
-    #     title="Phone Booth",
-    #     year=2002,
-    #     description="Publicist Stuart Shepard finds himself trapped in a phone booth, pinned down by an extortionist's sniper rifle. Unable to leave or receive outside help, Stuart's negotiation with the caller leads to a jaw-dropping climax.",
-    #     rating=7.3,
-    #     ranking=10,
-    #     review="My favourite character was the caller.",
-    #     img_url="https://image.tmdb.org/t/p/w500/tjrX2oWRCM3Tvarz38zlZM7Uc10.jpg"
-    # )
-    # db.session.add(new_movie)
-    # db.session.commit()
+
 class RateMovieForm(FlaskForm):
     rating = StringField("Your Rating Out of 10 e.g. 7.5")
     review = StringField("Your Review")
@@ -47,7 +37,6 @@ class Add(FlaskForm):
 @app.route("/")
 def home():
 
-    # all_Movies = db.session.query(Movies.rating).all()
     all_Movies = Movies.query.order_by(Movies.rating).all()
     for i in range(len(all_Movies)):
         all_Movies[i].ranking = len(all_Movies)-i
